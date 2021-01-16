@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-7">
+    <title>  Jamal outside kitchen </title>
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <meta name="viewport" content="width=device-width, initial-scale=2, maximum-scale=1, user-scalable=yes">
+    <link rel="stylesheet" href="https://oasis-odk.co.il/wp-content/themes/oasis/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css3?family=Heebo:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        .wpcf7-submit {
+            display: none;
+        }
+        
+        .recaptcha-btn {
+            display: block;
+        }
+        
+        .grecaptcha-badge {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var contactform = [];
+        var checkIfCalled = true;
+        var renderGoogleInvisibleRecaptchaFront = function() {
+            // prevent form submit from enter key
+            jQuery("input[name=_wpcf7]").attr("class", "formid");
+            jQuery('.wpcf7-form').on('keyup keypress', "input", function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            jQuery('.wpcf7-submit').each(function(index) {
+
+                var checkexclude = 0;
+                var form = jQuery(this).closest('.wpcf7-form');
+                var value = jQuery(form).find(".formid").val();
+                // check form exclude from invisible recaptcha
+                if (checkexclude == 0) {
+                    // Hide the form orig submit button
+                    form.find('.wpcf7-submit').hide();
+
+                    // Fetch class and value of orig submit button
+                    btnClasses = form.find('.wpcf7-submit').attr('class');
+                    btnValue = form.find('.wpcf7-submit').attr('value');
+
+                    // Add custom button and recaptcha holder
+
+                    form.find('.wpcf7-submit').after('<input type="button" id="wpcf-custom-btn-' + index + '" class="' + btnClasses + '  recaptcha-btn recaptcha-btn-type-css" value="' + btnValue + '" title="' + btnValue + '" >');
+                    form.append('<div class="recaptcha-holder" id="recaptcha-holder-' + index + '"></div>');
+                    // Recaptcha rendenr from here
+                    var holderId = grecaptcha.render('recaptcha-holder-' + index, {
+                        'sitekey': '6Lfx4s8ZAAAAAMyd_H8oLGinS_Z4F0_CbsEdFKj6',
+                        'size': 'invisible',
+                        'badge': 'bottomright', // possible values: bottomright, bottomleft, inline
+                        'callback': function(recaptchaToken) {
+                            //console.log(recaptchaToken);
+                            var response = jQuery('#recaptcha-holder-' + index).find('.g-recaptcha-response').val();
+                            //console.log(response);
+                            //Remove old response and store new respone
+                            jQuery('#recaptcha-holder-' + index).parent().find(".respose_post").remove();
+                            jQuery('#recaptcha-holder-' + index).after('<input type="hidden" name="g-recaptcha-response"  value="' + response + '" class="respose_post">')
+                            grecaptcha.reset(holderId);
+
+                            if (typeof customCF7Validator !== 'undefined') {
+                                if (!customCF7Validator(form)) {
+                                    return;
+                                }
+                            }
+                            // Call default Validator function
+                            else if (contactFormDefaultValidator(form)) {
+                                return;
+                            } else {
+                                // hide the custom button and show orig submit button again and submit the form
+                                jQuery('#wpcf-custom-btn-' + index).hide();
+                                form.find('input[type=submit]').show();
+                                form.find("input[type=submit]").click();
+                                form.find('input[type=submit]').hide();
+                                jQuery('#wpcf-custom-btn-' + index).attr('style', '');
+                            }
+                        }
+                    }, false);
+
+                    // action call when click on custom button
+                    jQuery('#wpcf-custom-btn-' + index).click(function(event) {
+                        event.preventDefault();
+                        // Call custom validator function
+                        if (typeof customCF7Validator == 'function') {
+                            if (!customCF7Validator(form)) {
+                                return false;
+                            }
+                        }
+                        // Call default Validator function
+                        else if (contactFormDefaultValidator(form)) {
+                            return false;
+                        } else if (grecaptcha.getResponse(holderId) != '') {
+                            grecaptcha.reset(holderId);
+                        } else {
+                            // execute the recaptcha challenge
+                            grecaptcha.execute(holderId);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    <script src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118766758_117235430101676_5517052539090211357_o.jpg?_nc_cat=107&ccb=2&_nc_sid=730e14&_nc_ohc=nCT0ND_YWgcAX_8zE0A&_nc_ht=scontent.ftlv1-1.fna&oh=9de99476cda23ee41a72ab6237127ac8&oe=602988FF" async defer></script>
+    <meta name='robots' content='noindex,nofollow' />
+    <link rel='dns-prefetch' href='//unpkg.com' />
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <script type="text/javascript">
+        window._wpemojiSettings = {
+            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/",
+            "ext": ".png",
+            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/",
+            "svgExt": ".svg",
+            "source": {
+                "concatemoji": "https:\/\/oasis-odk.co.il\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.6"
+            }
+        };
+        ! function(e, a, t) {
+            var r, n, o, i, p = a.createElement("canvas"),
+                s = p.getContext && p.getContext("2d");
+
+            function c(e, t) {
+                var a = String.fromCharCode;
+                s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, e), 0, 0);
+                var r = p.toDataURL();
+                return s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, t), 0, 0), r === p.toDataURL()
+            }
+
+            function l(e) {
+                if (!s || !s.fillText) return !1;
+                switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
+                    case "flag":
+                        return !c([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) && (!c([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !c([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]));
+                    case "emoji":
+                        return !c([55357, 56424, 8205, 55356, 57212], [55357, 56424, 8203, 55356, 57212])
+                }
+                return !1
+            }
+
+            function d(e) {
+                var t = a.createElement("script");
+                t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
+            }
+            for (i = Array("flag", "emoji"), t.supports = {
+                    everything: !0,
+                    everythingExceptFlag: !0
+                }, o = 0; o < i.length; o++) t.supports[i[o]] = l(i[o]), t.supports.everything = t.supports.everything && t.supports[i[o]], "flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[i[o]]);
+            t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function() {
+                t.DOMReady = !0
+            }, t.supports.everything || (n = function() {
+                t.readyCallback()
+            }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function() {
+                "complete" === a.readyState && t.readyCallback()
+            })), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji), d(r.wpemoji)))
+        }(window, document, window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='adele-shadowbox.css-css' href='https://oasis-odk.co.il/wp-content/themes/oasis/js/shadowbox.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='animate-css' href='https://unpkg.com/aos@2.3.1/dist/aos.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='bxslider-css' href='https://oasis-odk.co.il/wp-content/themes/oasis/js/bxslider/jquery.bxslider.min.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='pretty-css' href='https://oasis-odk.co.il/wp-content/themes/oasis/js/jquery-ui.min.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-block-library-rtl-css' href='https://oasis-odk.co.il/wp-includes/css/dist/block-library/style-rtl.min.css?ver=5.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css' href='https://oasis-odk.co.il/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.3.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-rtl-css' href='https://oasis-odk.co.il/wp-content/plugins/contact-form-7/includes/css/styles-rtl.css?ver=5.3.2' type='text/css' media='all' />
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-content/themes/oasis/js/jquery-ui.min.js?ver=1.0.0' id='jsui-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-content/themes/oasis/js/bxslider/jquery.bxslider.min.js?ver=1.0.0' id='bxslider-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-content/themes/oasis/js/shadowbox.js?ver=1.0' id='adele-starashton-js'></script>
+    <script type='text/javascript' src='https://unpkg.com/aos@2.3.1/dist/aos.js?ver=1.0' id='animate_js-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-content/themes/oasis/js/custom.js?ver=1.0.0' id='adele-js'></script>
+    <script type='text/javascript' src='https://oasis-odk.co.il/wp-content/plugins/cf7-invisible-recaptcha/js/cf7_invisible_recaptcha.js?ver=1.2.3' id='cf7_invisible_recaptcha_functions-js'></script>
+    <link rel="https://api.w.org/" href="https://oasis-odk.co.il/wp-json/" />
+    <link rel="alternate" type="application/json" href="https://oasis-odk.co.il/wp-json/wp/v2/pages/22" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://oasis-odk.co.il/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://oasis-odk.co.il/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.6" />
+    <link rel="canonical" href="https://oasis-odk.co.il/" />
+    <link rel='shortlink' href='https://oasis-odk.co.il/' />
+    <link rel="alternate" type="application/json+oembed" href="https://oasis-odk.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Foasis-odk.co.il%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://oasis-odk.co.il/wp-json/oembed/1.0/embed?url=https%3A%2F%2Foasis-odk.co.il%2F&#038;format=xml" />
+    <link rel="icon" href="https://oasis-odk.co.il/wp-content/uploads/2020/09/logo_100px.png" sizes="32x32" />
+    <link rel="icon" href="https://oasis-odk.co.il/wp-content/uploads/2020/09/logo_100px.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://oasis-odk.co.il/wp-content/uploads/2020/09/logo_100px.png" />
+    <meta name="msapplication-TileImage" content="https://oasis-odk.co.il/wp-content/uploads/2020/09/logo_100px.png" />
+
+
+</head>
+
+<body class="rtl home page-template-default page page-id-22 wp-custom-logo">
+    <header id="header">
+        <div class="wrapper">
+            <div class="topheader">
+                <nav id="nav" class="headernav">
+                    <div class="menu-%d7%aa%d7%a4%d7%a8%d7%99%d7%98-%d7%a2%d7%9c%d7%99%d7%95%d7%9f-container">
+                        <ul id="menu-%d7%aa%d7%a4%d7%a8%d7%99%d7%98-%d7%a2%d7%9c%d7%99%d7%95%d7%9f" class="menu">
+                            <li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="/#waytokitchen">הדרך אל המטבח שלכם</a></li>
+                            <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="/#whyoasis">למה אואזיס</a></li>
+                            <li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="/#homegallery">ככה זה נראה</a></li>
+                            <li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="/#testimonials">ככה זה מרגיש</a></li>
+                            <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="/#categories">בהתאמה אישית</a></li>
+                            <li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="/#footer">דברו איתנו</a></li>
+                        </ul>
+                    </div>
+                    <div style="clear:both"></div>
+                </nav>
+                <div class="openmenu">
+                    <span class="bar1"></span>
+                    <span class="bar2"></span>
+                    <span class="bar3"></span>
+                </div>
+                <div class="logo">
+                    <a href="https://t3.ftcdn.net/jpg/02/09/03/02/360_F_209030239_QLZFpylq5Wr16uHqq0bGCQGS9BByXjEn.jpg"> <img src="https://t3.ftcdn.net/jpg/02/09/03/02/360_F_209030239_QLZFpylq5Wr16uHqq0bGCQGS9BByXjEn.jpg" alt="logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="stickyheaer">
+        <div class="wrapper">
+            <div class="topheader">
+                <nav id="nav1" class="headernav">
+                    <div class="menu-%d7%aa%d7%a4%d7%a8%d7%99%d7%98-%d7%a2%d7%9c%d7%99%d7%95%d7%9f-container">
+                        <ul id="menu-%d7%aa%d7%a4%d7%a8%d7%99%d7%98-%d7%a2%d7%9c%d7%99%d7%95%d7%9f-1" class="menu">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="/#waytokitchen">הדרך אל המטבח שלכם</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="/#whyoasis">למה אואזיס</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="/#homegallery">ככה זה נראה</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="/#testimonials">ככה זה מרגיש</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="/#categories">בהתאמה אישית</a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="/#footer">דברו איתנו</a></li>
+                        </ul>
+                    </div>
+                    <div style="clear:both"></div>
+                </nav>
+                <div class="openmenu">
+                    <span class="bar1"></span>
+                    <span class="bar2"></span>
+                    <span class="bar3"></span>
+                </div>
+                <div class="logo">
+                    <a href="https://t3.ftcdn.net/jpg/02/09/03/02/360_F_209030239_QLZFpylq5Wr16uHqq0bGCQGS9BByXjEn.jpg"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh0_6CqRGDseIsxIacMyd0OE_xUtrpJg1FAQ&usqp=CAU" alt="logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="home" id="main post-22" class="post-22 page type-page status-publish hentry">
+        <div id="mainbanner" style="background-image:linear-gradient(rgba(22,31,31, 0.90),rgba(22,31,31, 0.90)),url('https://oasis-odk.co.il/wp-content/uploads/2020/09/ezgif.com-gif-maker.jpg');">
+            <div class="wrapper">
+                <div class="menu-%d7%a7%d7%98%d7%92%d7%95%d7%a8%d7%99%d7%95%d7%aa-container">
+                    <ul id="menu-%d7%a7%d7%98%d7%92%d7%95%d7%a8%d7%99%d7%95%d7%aa" class="menu">
+                        <li id="menu-item-109" class="menu-item menu-item-type-taxonomy menu-item-object-kitchen_type menu-item-109"><a href="https://oasis-odk.co.il/kitchen_type/%d7%92%d7%a8%d7%99%d7%9c-%d7%90%d7%a8%d7%95%d7%91%d7%94/">גריל ארובה</a></li>
+                        <li id="menu-item-110" class="menu-item menu-item-type-taxonomy menu-item-object-kitchen_type menu-item-110"><a href="https://oasis-odk.co.il/kitchen_type/%d7%92%d7%a8%d7%99%d7%9c-%d7%92%d7%96/">גריל גז</a></li>
+                        <li id="menu-item-111" class="menu-item menu-item-type-taxonomy menu-item-object-kitchen_type menu-item-111"><a href="https://oasis-odk.co.il/kitchen_type/%d7%92%d7%a8%d7%99%d7%9c-%d7%a4%d7%97%d7%9e%d7%99%d7%9d/">גריל פחמים</a></li>
+                        <li id="menu-item-112" class="menu-item menu-item-type-taxonomy menu-item-object-kitchen_type menu-item-112"><a href="https://oasis-odk.co.il/kitchen_type/%d7%98%d7%91%d7%95%d7%a0%d7%99%d7%9d/">טבונים</a></li>
+                        <li id="menu-item-113" class="menu-item menu-item-type-taxonomy menu-item-object-kitchen_type menu-item-113"><a href="https://oasis-odk.co.il/kitchen_type/%d7%90%d7%91%d7%99%d7%96%d7%a8%d7%99%d7%9d-%d7%a0%d7%99%d7%9c%d7%95%d7%95%d7%99%d7%9d/">אביזרים נילווים</a></li>
+                        <li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-245"><a href="https://oasis-odk.co.il/%d7%99%d7%97%d7%99%d7%93%d7%95%d7%aa/">מטבחי מסגרות</a></li>
+                    </ul>
+                </div>
+                <h1> גמאל חמוד ניורסתה הצפון מטבחי חוץ </h1>
+                <h2> עבודה מהלב - <span> לא מאמין? תתקשר ותשתתף  </span></h2>
+                <a href="#footer">דברו איתנו</a>
+            </div>
+        </div>
+
+        <div id="waytokitchen">
+            <div class="wrapper">
+                <h2>הדרך אל המטבח שלכם</h2>
+                <div class="waywrapper">
+                    <div class="waynumber">
+                        <div class="number"><span>01</span></div>
+                        <div class="arrow">
+                            <span class="shaft"></span>
+                        </div>
+                        <h3>  סטייל לפי בקשת הלקוח</h3>
+                        <p>התאמת מטבח החוץ ואבזורו לסגנון הלייף סטייל שלכם ותנאי השטח המתאימים.</p>
+                    </div>
+                    <div class="waynumber">
+                        <div class="number"><span>02</span></div>
+                        <div class="arrow">
+                            <span class="shaft"></span>
+                        </div>
+                        <h3>הצגת מודל ראשוני והצעת מחיר</h3>
+                        <p>בניית מודל תלת מימדי המדמה את מטבח החלומות שיצרנו עבורכם.</p>
+                    </div>
+                    <div class="waynumber">
+                        <div class="number"><span>03</span></div>
+                        <div class="arrow">
+                            <span class="shaft"></span>
+                        </div>
+                        <h3> ניורסטה גמאל חמוד - מגד הקרום צפון   </h3>
+                        <p>    תמונות  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+        <div id="whyoasis" style="background-image:linear-gradient(rgba(22,31,31, 0.90),rgba(22,31,31, 0.90)),url('https://oasis-odk.co.il/wp-content/uploads/2020/09/ezgif.com-gif-maker-1.jpg');">
+            <div class="wrapper">
+                <h3>  ?למה אנחנו  </h3>
+                <p>עם ניסיון של 10 שנים ומאות מטבחים אנו נספק לכם מטבח שתוכנן במיוחד בשבילכם, תואם את כל מה שדמיינתם, <br /> "תפור" לחצר או מרפסת שלכם. מטבח שדורש מינימום תחזוקה ויעמוד שנים בתנאי החוץ של ארצנו. <br /> נוודא שהחוויה תתחיל כבר בתהליך התכנון
+                    וההקמה של המטבח. נקפיד על שקיפות, יושר ואמינות. <br /> נבנה במקצועיות תוך מתן דגש על הפרטים והגימור ונמסור לכם מטבח שיבטיח הנאה לאורך שנים!<br />
+                    <br />
+                </p>
+                <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/" class="facebook" target="_blank"><img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118361585_106801881145031_7043682595730944244_n.png?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=W0SjoaGLBKoAX-ZB2we&_nc_ht=scontent.ftlv1-1.fna&oh=33df878455e07aa971fea99241c3271b&oe=6028C57C"          </div>
+        </div>
+
+        <div id="homegallery">
+            <div class="wrapper">
+                <h3>ככה זה נראה</h3>
+                <ul>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/124183622_145120977313121_6346874274277689191_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=DLaf5wh1wCkAX_sIP_U&_nc_ht=scontent.ftlv1-1.fna&oh=6888d6a73caff6d83f3f1895b3119e97&oe=60285D23" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122906674_141491174342768_8867221641747083478_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=M_lFLHXxs_kAX99emPI&_nc_ht=scontent.ftlv1-1.fna&oh=08626290f5bdac25dfd8852aa023bde9&oe=6027EFC2" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/126427381_150593270099225_8968545110861050470_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=3oURdH3GBTcAX-C6aAh&_nc_ht=scontent.ftlv1-1.fna&oh=1beada697ead30c0ab6efa48645eca74&oe=60292F76" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://oasis-odk.co.il/wp-content/uploads/2020/11/מטבח-2.6-בכרמיאל-300x225.jpg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/121464990_136949688130250_5343978200049001035_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=GfSMSlrGqeMAX_lAfBX&_nc_ht=scontent.ftlv1-1.fna&oh=b7059360d53403dca3829df4649d77a5&oe=60289818" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/121532932_136949638130255_2701453651848399747_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=QbFDRwJ_a64AX8g20o6&_nc_ht=scontent.ftlv1-1.fna&oh=830af469a4901447f5796168c0abce15&oe=60265A6B" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122151353_139563104535575_4229417031088098112_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=vA0lyqdKFXYAX_ZqHpm&_nc_ht=scontent.ftlv1-1.fna&oh=f6f68e68d2f875a7ed9f513513c2e8ef&oe=60289023" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122252001_139563131202239_9152429105594992610_o.jpg?_nc_cat=101&ccb=2&_nc_sid=730e14&_nc_ohc=C4JkAvC69ZUAX_Af4H6&_nc_ht=scontent.ftlv1-1.fna&oh=4c45cacab93983bb770f25ed4a725c4e&oe=6025BB44" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122160318_139563137868905_9067200386325267413_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=dn-87XhBAdEAX_Zg2vM&_nc_ht=scontent.ftlv1-1.fna&oh=5847cfe356211cb6a4d59cfe67cb52b5&oe=6028412D" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122554513_139563221202230_4344218237344849604_o.jpg?_nc_cat=100&ccb=2&_nc_sid=730e14&_nc_ohc=x5kaV3B7OCEAX_f23zy&_nc_ht=scontent.ftlv1-1.fna&oh=9db77179f8ba766819d6f13e0da66323&oe=6026EB41" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119661072_125795385912347_2791392099087442082_o.jpg?_nc_cat=107&ccb=2&_nc_sid=730e14&_nc_ohc=8FniHKkgAmcAX9SuYWX&_nc_ht=scontent.ftlv1-1.fna&oh=6d508b2c350a69853501dedb174059b1&oe=60269F1F" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119647401_125795495912336_5637368473529424585_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=fyexmBN9-f0AX8ZI18t&_nc_ht=scontent.ftlv1-1.fna&oh=a3880297c1a8a8a18d776fe9b99669f4&oe=6028D4FD" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/122554513_140208591137693_2803557851478926372_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=wM5tnN2ZWbYAX9WqwDW&_nc_ht=scontent.ftlv1-1.fna&oh=52faaca5a8f7a1ba11cc67e24a8232dc&oe=6028A886" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/130826306_164630195362199_1881579166505955071_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=M9U7kXNxqVQAX9fX_6i&_nc_ht=scontent.ftlv1-1.fna&oh=f91e119aea62bbab4a505f067ec3c786&oe=6026CCFE" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/131942454_170325718125980_3216554431226749709_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=9aBpDEZbuHQAX8N6TXI&_nc_ht=scontent.ftlv1-1.fna&oh=3cc6b6a990db381b0f7b5ec4cadf7a7d&oe=60292A59" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/131935530_170325748125977_2391305434252302544_o.jpg?_nc_cat=109&ccb=2&_nc_sid=730e14&_nc_ohc=yrgGdRTKtMUAX9NIPrQ&_nc_ht=scontent.ftlv1-1.fna&oh=d0411ae3fdb2913609fce5a7a5f19541&oe=602697DD" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119664194_125793665912519_6959308536453609556_o.jpg?_nc_cat=101&ccb=2&_nc_sid=730e14&_nc_ohc=gAEUPmdMgzEAX9jKv-o&_nc_ht=scontent.ftlv1-1.fna&oh=4675c4a2498fff68527e6335ffc2a227&oe=6027108A" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119196590_123664976125388_156599703667091816_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=uO4xJPAoS3YAX-hAgXY&_nc_ht=scontent.ftlv1-1.fna&oh=e1a138653aeb35b5297503e6447f6cd9&oe=6026878F" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119176823_123665246125361_4480353980795360481_o.jpg?_nc_cat=108&ccb=2&_nc_sid=730e14&_nc_ohc=ZFnbPT7yNDMAX8Uv4ow&_nc_ht=scontent.ftlv1-1.fna&oh=6d4bd28cdb6f016a3252d4b3cd335fd7&oe=6027F0A0" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119575123_125794335912452_3586938502884840682_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=qb3k8bfn0cUAX8n4IlJ&_nc_ht=scontent.ftlv1-1.fna&oh=432428be91f968e022b193526ec58686&oe=6025FAFA" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119675147_125794645912421_4681750574397032165_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=_7Bt7F41NQkAX9TNDe_&_nc_ht=scontent.ftlv1-1.fna&oh=435390ee0617a77df05cb11f274adcfe&oe=6028A9F9" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119647401_125795495912336_5637368473529424585_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=fyexmBN9-f0AX8ZI18t&_nc_ht=scontent.ftlv1-1.fna&oh=a3880297c1a8a8a18d776fe9b99669f4&oe=6028D4FD" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119196241_123664916125394_987018828637170394_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=tLdGGIRV2PcAX9QvvKC&_nc_ht=scontent.ftlv1-1.fna&oh=3eac94897c4bf8be3b55f6b43bb45586&oe=60286AB4" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119022549_119567176535168_1704088125239226169_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=fEy-ArgmWVsAX_bVCVj&_nc_ht=scontent.ftlv1-1.fna&oh=15ab3d7c8b45cedb590c627c1f3d43d9&oe=6027EBA1" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119002181_119567059868513_7271957297560178003_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=u_u3ZJ9ORysAX9snm8j&_nc_ht=scontent.ftlv1-1.fna&oh=324062dd8655e0ffe132fcaf3c0472e1&oe=6025C1E9" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119023504_119567006535185_1961449874375360485_o.jpg?_nc_cat=100&ccb=2&_nc_sid=730e14&_nc_ohc=GHA1DtdnrOcAX_46pDX&_nc_oc=AQm237p9eDZWvLhfmjgnE7PaqwLk43rW9tH-FRMOyaExSqafXMSKdRo0d_8nH_rBx4XV98gc3uhPGpXbRepgyHdq&_nc_ht=scontent.ftlv1-1.fna&oh=bbabb3d36b5f3c2a8afeebb23fd5c450&oe=60288394" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118966756_119566949868524_5203412770285766625_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=lrq4HPI5WL0AX-k3Ig7&_nc_ht=scontent.ftlv1-1.fna&oh=fe0b30a79eb067ca8b916f3ce7cac39a&oe=602825FB" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119019657_119566849868534_3264694621508518948_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=t3PxioT0AAkAX-Jpq3v&_nc_ht=scontent.ftlv1-1.fna&oh=3334d685910637c98dc8ac5547e61104&oe=60262DFA" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118766758_117235430101676_5517052539090211357_o.jpg?_nc_cat=107&ccb=2&_nc_sid=730e14&_nc_ohc=nCT0ND_YWgcAX_8zE0A&_nc_ht=scontent.ftlv1-1.fna&oh=9de99476cda23ee41a72ab6237127ac8&oe=602988FF" data-rel="shadowbox[mixed];height=700;width=1000" data-title="">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118771053_117234623435090_7476217910195050149_o.jpg?_nc_cat=101&ccb=2&_nc_sid=730e14&_nc_ohc=Z2isvPE4olAAX9eGH-Y&_nc_ht=scontent.ftlv1-1.fna&oh=dde0804fec039db5fe9705f504ace6be&oe=602838D0" alt="">
+                        </a>
+                    </li>
+                </ul>
+                <a class="allgallery" href="/גלרייה/">לכל הגלרייה</a>
+            </div>
+        </div>
+
+        <div id="testimonials">
+            <video autoplay muted loop id="myVideo">
+	  <source src="----" type="video/mp4">  
+ 	</video>
+            <div class="testimask">
+                <div class="wrapper">
+                    <h3>ככה זה מרגיש</h3>
+                    <div class="testimonialswrapper">
+                        <div class="testimonial">
+                            <h5>מוחמד</h5>
+                            <p>ני בדר"כ לא מפרסם פוסטים כאלו אבל הפעם אני ממש חייב. התחדשנו במטבח חוץ של חברת "גמאל חמוד מפעל ניורסטה" . מדובר באנשים מקסימים, עבודה מושלמת וחומרים איכותיים. תודה  ולכל הצוות על שהגשמתם לנו חלום. ממליץ מכל הלב!<br
+                                />
+                            </p>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="testimonial">
+                            <h5>מרים</h5>
+                            <p>ברכות חמות ל גמאל חמוד על העבודה המושלמת באמת משהו מושלם ותקין ויפה להרבה שנים של אושר.<br />
+                            </p>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="testimonial">
+                            <h5>איצחק</h5>
+                            <p>גמאל יא גמאל ואאאאו כמה אתה משקיע בעבודה שלך מכל הלב תודה אחלה איש<br />
+                            </p>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="categories">
+            <div class="wrapper">
+                <h3>בהתאמה אישית</h3>
+                <div class="kitchenswrapper">
+                    <div class="kitchentype">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/photos/164630182028867">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/130826306_164630195362199_1881579166505955071_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=M9U7kXNxqVQAX9fX_6i&_nc_ht=scontent.ftlv1-1.fna&oh=f91e119aea62bbab4a505f067ec3c786&oe=6026CCFE" alt="גריל ארובה"> גריל ארובה
+                        </a>
+                    </div>
+
+                    <div class="kitchentype">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/photos/123664912792061">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119196241_123664916125394_987018828637170394_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=tLdGGIRV2PcAX9QvvKC&_nc_ht=scontent.ftlv1-1.fna&oh=3eac94897c4bf8be3b55f6b43bb45586&oe=60286AB4" alt="גריל גז"> גריל גז
+                        </a>
+                    </div>
+
+                    <div class="kitchentype">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/photos/117235420101677">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118766758_117235430101676_5517052539090211357_o.jpg?_nc_cat=107&ccb=2&_nc_sid=730e14&_nc_ohc=nCT0ND_YWgcAX_8zE0A&_nc_ht=scontent.ftlv1-1.fna&oh=9de99476cda23ee41a72ab6237127ac8&oe=602988FF" alt="גריל פחמים"> גריל פחמים
+                        </a>
+                    </div>
+
+                    <div class="kitchentype">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/photos/119567003201852">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/119023504_119567006535185_1961449874375360485_o.jpg?_nc_cat=100&ccb=2&_nc_sid=730e14&_nc_ohc=GHA1DtdnrOcAX_46pDX&_nc_oc=AQm237p9eDZWvLhfmjgnE7PaqwLk43rW9tH-FRMOyaExSqafXMSKdRo0d_8nH_rBx4XV98gc3uhPGpXbRepgyHdq&_nc_ht=scontent.ftlv1-1.fna&oh=bbabb3d36b5f3c2a8afeebb23fd5c450&oe=60288394" alt="טבונים"> טבונים
+                        </a>
+                    </div>
+
+                    <div class="kitchentype">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/photos/117229696768916">
+                            <img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118763923_117229710102248_6473644098685698365_o.jpg?_nc_cat=109&ccb=2&_nc_sid=730e14&_nc_ohc=aXmSNvuaEcIAX-QCFO_&_nc_ht=scontent.ftlv1-1.fna&oh=814ed19aa6311b3085f98918242e357f&oe=6025DC3B" alt="אביזרים נילווים"> אביזרים נילווים
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            Shadowbox.init({
+                language: 'he',
+                players: ['img', 'html', 'iframe', 'qt', 'wmp', 'swf', 'flv']
+            });
+        </script>
+
+
+    </main>
+    <footer id="footer">
+        <div class="wrapper">
+            <div class="contactform">
+                <h5>דברו איתנו</h4>
+                    <div role="form" class="wpcf8" id="wpcf7-f101-o1" lang="he-IL" dir="rtl">
+                        <div class="screen-reader-response">
+                            <p role="status" aria-live="polite" aria-atomic="true"></p>
+                            <ul></ul>
+                        </div>
+                        <form action="/?gclid=Cj1KCQiAlsv_BRDtARIsAHMGVSaHFm35WkM5bFmSOq7TBNWtGKobFBQMZAcvh4PqNCd8YsOJg3D7-qYaAq6FEALw_wcB#wpcf7-f101-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                            <div style="display: none;">
+                                <input type="hidden" name="_wpcf9" value="101" />
+                                <input type="hidden" name="_wpcf9_version" value="5.3.2" />
+                                <input type="hidden" name="_wpcf9_locale" value="he_IL" />
+                                <input type="hidden" name="_wpcf9_unit_tag" value="wpcf7-f101-o1" />
+                                <input type="hidden" name="_wpcf9_container_post" value="0" />
+                                <input type="hidden" name="_wpcf9_posted_data_hash" value="" />
+                            </div>
+                            <div class="twoline">
+                                <label><span class="wpcf8-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="שם מלא" /></span> </label><label><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="אימייל" /></span> </label>
+                            </div>
+                            <div class="twoline">
+                                <label><span class="wpcf8-form-control-wrap your-phone"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="טלפון" /></span> </label><label><span class="wpcf7-form-control-wrap your-city"><input type="text" name="your-city" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="עיר מגורים" /></span> </label>
+                            </div>
+                            <p><label><span class="wpcf8-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="כתבו לנו"></textarea></span> </label><br
+                                />
+                                <input type="submit" value="שליחה" class="wpcf8-form-control wpcf7-submit" /></p>
+                            <noscript>
+			<div class="wpcf8-response-output wpcf7-spam-blocked">Your browser does not support JavaScript!. Please enable javascript in your browser in order to get form work properly.</div>
+	</noscript>
+                            <script type='text/javascript'>
+                                if (contactform === undefined) {
+                                    var contactform = [];
+                                }
+                                var innerVal = [102, 'mail_sent_ok', 'ההודעה נשלחה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'mail_sent_ng', 'ארעה שגיאה בשליחת ההודעה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'validation_error', 'קיימת שגיאה בשדה אחד או יותר. נא לבדוק ולנסות שוב.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'spam', 'ארעה שגיאה בשליחת ההודעה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'accept_terms', 'עליך להסכים לתנאים לפני שליחת ההודעה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_required', 'זהו שדה חובה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_too_long', 'השדה ארוך מדי.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_too_short', 'השדה קצר מדי.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_date', 'שדה התאריך אינו נכון.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'date_too_early', 'התאריך מוקדם מהתאריך המותר.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'date_too_late', 'התאריך מאוחר מהתאריך המותר.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'upload_failed', 'שגיאה לא ידועה בהעלאת הקובץ.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'upload_file_type_invalid', 'אין לך הרשאות להעלות קבצים בפורמט זה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'upload_file_too_large', 'הקובץ גדול מדי.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'upload_failed_php_error', 'שגיאה בהעלאת הקובץ.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_number', 'פורמט המספר אינו תקין.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'number_too_small', 'המספר קטן מהמינימום המותר.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'number_too_large', 'המספר גדול מהמקסימום המותר.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'quiz_answer_not_correct', 'התשובה לשאלת הביטחון אינה נכונה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [102, 'invalid_email', 'כתובת האימייל שהוזנה אינה תקינה.'];
+                                contactform.push(innerVal);
+                                var innerVal = [101, 'invalid_url', 'הקישור אינו תקין.'];
+                                contactform.push(innerVal);
+                                var innerVal = [101, 'invalid_tel', 'מספר הטלפון אינו תקין.'];
+                                contactform.push(innerVal);
+                                var innerVal = [101, 'gdpr', ''];
+                                contactform.push(innerVal);
+                            </script>
+                            <div class="wpcf7-response-output" aria-hidden="true"></div>
+                        </form>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="contactdetails">
+                        <a href="gmalhamod88@gmail.com">gmalhamod88@gmail.com</a>
+                        <a href="tel:052-5526247">052-5526247 GMAL גמאל חמוד מגד הקרום</a>
+                     
+                    </div>
+                    <div class="socialswrapper">
+                        <a href="https://www.facebook.com/JH-%D7%94%D7%A0%D7%93%D7%A1%D7%AA-%D7%A0%D7%99%D7%A8%D7%95%D7%A1%D7%98%D7%94-%D7%92%D7%9E%D7%90%D7%9C-%D7%97%D7%9E%D7%95%D7%93-106800537811832/"><img src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t1.0-9/118361585_106801881145031_7043682595730944244_n.png?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=W0SjoaGLBKoAX-ZB2we&_nc_ht=scontent.ftlv1-1.fna&oh=33df878455e07aa971fea99241c3271b&oe=6028C57C"></a>
+                    </div>
+            </div>
+
+            <div class="credit">
+                <span> © כל הזכויות שמורות 2020</span>
+            </div>
+        </div>
+    </footer>
+    <a href="" class="wsup"></a>
+
+    <script type='text/javascript' id='contact-form-7-js-extra'>
+        /* <![CDATA[ */
+        var wpcf7 = {
+            "apiSettings": {
+                "root": "https:\/\/oasis-odk.co.il\/wp-json\/contact-form-7\/v1",
+                "namespace": "contact-form-7\/v1"
+            },
+            "cached": "1"
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='' id='contact-form-7-js'></script>
+    <script type='text/javascript' src='' id='wpmssab-js'></script>
+    <script type='text/javascript' src='' id='SmoothScroll-js'></script>
+    <script type='text/javascript' src='' id='wpmss-js'></script>
+    <script type='text/javascript' src='' id='wp-embed-js'></script>
